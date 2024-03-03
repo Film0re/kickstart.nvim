@@ -16,9 +16,10 @@ vim.opt.relativenumber = true
 
 --vim.opt.expandtab = true
 
-
 return {
-    'christoomey/vim-tmux-navigator',
-    'wakatime/vim-wakatime',
-    'folke/zen-mode.nvim',
+  'christoomey/vim-tmux-navigator',
+  'wakatime/vim-wakatime',
+  'folke/zen-mode.nvim',
+  'tpope/vim-fugitive',
+  'tpop/vim-rhubarb',
 }
