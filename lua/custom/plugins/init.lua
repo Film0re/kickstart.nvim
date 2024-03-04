@@ -21,5 +21,5 @@ return {
   'wakatime/vim-wakatime',
   'folke/zen-mode.nvim',
   'tpope/vim-fugitive',
-  'tpop/vim-rhubarb',
+  'tpope/vim-rhubarb',
 }
