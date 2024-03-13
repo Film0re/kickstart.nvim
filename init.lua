@@ -640,7 +640,10 @@ require('lazy').setup {
           return 'make install_jsregexp'
         end)(),
       },
-      'saadparwaiz1/cmp_luasnip',
+      {
+        'saadparwaiz1/cmp_luasnip',
+        dependencies = { 'rafamadriz/friendly-snippets' },
+      },
 
       -- Adds other completion capabilities.
       --  nvim-cmp does not ship with all sources by default. They are split
@@ -652,7 +655,22 @@ require('lazy').setup {
       --    you can use this plugin to help you. It even has snippets
       --    for various frameworks/libraries/etc. but you will have to
       --    set up the ones that are useful for you.
-      'rafamadriz/friendly-snippets',
+      --
+      {
+        'rafamadriz/friendly-snippets',
+
+        config = function()
+          -- You can configure the snippets that are loaded here
+          --  See `:help friendly-snippets` for more information
+          require('luasnip.loaders.from_vscode').lazy_load          -- enable for html
+ {
+            'html',
+          }
+
+          -- enable only for html
+          -- require('luasnip.loaders.from_vscode').lazy_load({
+        end,
+      },
     },
     config = function()
       -- See `:help cmp`
@@ -711,6 +729,7 @@ require('lazy').setup {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'friendly-snippets' },
         },
       }
     end,
