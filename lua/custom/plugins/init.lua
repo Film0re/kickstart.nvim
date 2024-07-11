@@ -20,7 +20,7 @@ vim.api.nvim_set_keymap('n', '<leader>z', '<cmd>lua require("zen-mode").toggle({
 --vim.opt.expandtab = true
 
 return {
-  'christoomey/vim-tmux-navigator',
+  -- 'christoomey/vim-tmux-navigator',
   'wakatime/vim-wakatime',
   'folke/zen-mode.nvim',
   'tpope/vim-fugitive',
