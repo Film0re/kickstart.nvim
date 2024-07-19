@@ -25,4 +25,11 @@ return {
   'folke/zen-mode.nvim',
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true,
+    -- use opts = {} for passing setup options
+    -- this is equalent to setup({}) function
+  },
 }
