@@ -628,6 +628,7 @@ require('lazy').setup {
 
   { -- Autoformat
     'stevearc/conform.nvim',
+    dependencies = 'luckasRanarison/tailwind-tools.nvim',
     opts = {
       notify_on_error = false,
       format_on_save = {
@@ -674,8 +675,7 @@ require('lazy').setup {
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
-      "luckasRanarison/tailwind-tools.nvim",
-'nvim-highlight-colors',
+      'nvim-highlight-colors',
       -- If you want to add a bunch of pre-configured snippets,
       --    you can use this plugin to help you. It even has snippets
       --    for various frameworks/libraries/etc. but you will have to
@@ -754,11 +754,11 @@ require('lazy').setup {
           { name = 'luasnip' },
           { name = 'path' },
           { name = 'friendly-snippets' },
-          { name = 'nvim-highlight-colors'}
+          { name = 'nvim-highlight-colors' },
         },
         formatting = {
-                          format = require("nvim-highlight-colors").format
-        }
+          format = require('nvim-highlight-colors').format,
+        },
       }
     end,
   },
@@ -799,7 +799,7 @@ require('lazy').setup {
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      -- require('mini.surround').setup()
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
