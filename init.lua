@@ -374,6 +374,14 @@ require('lazy').setup {
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
+      -- Currently only works with main as the name :\
+      vim.keymap.set('n', '<leader>sc', function()
+        builtin.git_files {
+          prompt_title = 'Git Changed Files',
+          git_command = { 'git', 'diff', '--name-only', 'main' },
+        }
+      end, { desc = '[S]earch Git [C]hanges' })
+
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -860,7 +868,7 @@ require('lazy').setup {
             goto_next_start = {
               [']f'] = { query = '@call.outer', desc = 'Next function call start' },
               [']m'] = { query = '@function.outer', desc = 'Next method/function def start' },
-              [']c'] = { query = '@class.outer', desc = 'Next class start' },
+              [']p'] = { query = '@class.outer', desc = 'Next class start' },
               [']i'] = { query = '@conditional.outer', desc = 'Next conditional start' },
               [']l'] = { query = '@loop.outer', desc = 'Next loop start' },
 
@@ -879,7 +887,7 @@ require('lazy').setup {
             goto_previous_start = {
               ['[f'] = { query = '@call.outer', desc = 'Prev function call start' },
               ['[m'] = { query = '@function.outer', desc = 'Prev method/function def start' },
-              ['[c'] = { query = '@class.outer', desc = 'Prev class start' },
+              ['[p'] = { query = '@class.outer', desc = 'Prev class start' },
               ['[i'] = { query = '@conditional.outer', desc = 'Prev conditional start' },
               ['[l'] = { query = '@loop.outer', desc = 'Prev loop start' },
             },

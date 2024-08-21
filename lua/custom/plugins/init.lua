@@ -26,6 +26,7 @@ return {
   'folke/zen-mode.nvim',
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  'nvim-neotest/nvim-nio',
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
