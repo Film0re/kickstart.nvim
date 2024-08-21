@@ -27,6 +27,7 @@ return {
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'nvim-neotest/nvim-nio',
+  'MeanderingProgrammer/render-markdown.nvim',
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
