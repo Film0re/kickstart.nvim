@@ -551,6 +551,7 @@ require('lazy').setup {
         },
         -- Add vue language server
         volar = {
+          -- version = 1.8.25 doesn't like this but this is the version
           filetypes = { 'vue', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
           init_options = {
             vue = {
