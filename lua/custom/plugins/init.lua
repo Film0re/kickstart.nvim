@@ -17,7 +17,13 @@ vim.opt.relativenumber = true
 -- Map a key combination to toggle Zen mode with custom window width
 vim.api.nvim_set_keymap('n', '<leader>z', '<cmd>lua require("zen-mode").toggle({})<CR>', { desc = 'Toggle Zenmode', noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>y', '"*y', { desc = 'Copy unnamed buffer to clipboard', noremap = true, silent = true })
+vim.keymap.set('n', ']e', function()
+  vim.diagnostic.goto_next { severity = vim.diagnostic.severity.ERROR }
+end, { desc = 'Next error' })
 
+vim.keymap.set('n', '[e', function()
+  vim.diagnostic.goto_prev { severity = vim.diagnostic.severity.ERROR }
+end, { desc = 'Previous error' })
 --vim.opt.expandtab = true
 
 return {

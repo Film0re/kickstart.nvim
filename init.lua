@@ -889,6 +889,8 @@ require('lazy').setup {
               [']p'] = { query = '@class.outer', desc = 'Next class start' },
               [']i'] = { query = '@conditional.outer', desc = 'Next conditional start' },
               [']l'] = { query = '@loop.outer', desc = 'Next loop start' },
+              [']n'] = { query = '@number.inner', desc = 'Next attribute start' },
+              [']t'] = { query = '@comment.outer', desc = 'Next comment start' },
 
               -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
               -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
