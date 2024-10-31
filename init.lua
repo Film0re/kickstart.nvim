@@ -650,6 +650,10 @@ require('lazy').setup {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         python = { 'isort', 'black' },
+        hbs = { 'prettierd' },
+        glimmer = { 'prettierd' },
+        handlebars = { 'prettierd' }, -- Add this
+        ['glimmer-ts'] = { 'prettierd' }, -- And this
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
@@ -843,6 +847,7 @@ require('lazy').setup {
         ensure_installed = {
           'bash',
           'c',
+          'glimmer',
           'html',
           'lua',
           'markdown',
@@ -855,6 +860,7 @@ require('lazy').setup {
           'css',
           'json',
           'javascript',
+          'glimmer',
         },
         -- Autoinstall languages that are not installed
         auto_install = true,
