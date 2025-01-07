@@ -21,6 +21,11 @@ vim.keymap.set('n', ']e', function()
   vim.diagnostic.goto_next { severity = vim.diagnostic.severity.ERROR }
 end, { desc = 'Next error' })
 
+vim.keymap.set('n', '<leader>do', ':DiffviewOpen<CR>', { desc = 'Open Diffview' })
+vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>', { desc = 'Close Diffview' })
+vim.keymap.set('n', '<leader>dh', ':DiffviewFileHistory<CR>', { desc = 'Show File History' })
+vim.keymap.set('n', '<leader>df', ':DiffviewFileHistory %<CR>', { desc = 'Show Current File History' })
+
 vim.keymap.set('n', '[e', function()
   vim.diagnostic.goto_prev { severity = vim.diagnostic.severity.ERROR }
 end, { desc = 'Previous error' })
@@ -28,6 +33,19 @@ end, { desc = 'Previous error' })
 
 return {
   -- 'christoomey/vim-tmux-navigator',
+  {
+    'sindrets/diffview.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+    config = function()
+      require('diffview').setup {
+        use_icons = true,
+      }
+    end,
+  },
+  'folke/noice.nvim',
   'wakatime/vim-wakatime',
   'folke/zen-mode.nvim',
   'tpope/vim-fugitive',
