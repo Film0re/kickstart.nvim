@@ -376,11 +376,9 @@ require('lazy').setup {
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-      -- Currently only works with main as the name :\
       vim.keymap.set('n', '<leader>sc', function()
-        builtin.git_files {
+        builtin.git_status {
           prompt_title = 'Git Changed Files',
-          git_command = { 'git', 'diff', '--name-only', 'main' },
         }
       end, { desc = '[S]earch Git [C]hanges' })
 
@@ -545,7 +543,6 @@ require('lazy').setup {
         -- ocamllsp = {},
         clangd = {},
         -- gopls = {},
-        pyright = {},
         angularls = {
           cmd = { 'ngserver', '--stdio', '--tsProbeLocations', '', '--ngProbeLocations', '', '--forceStrictTemplates' },
         },
@@ -570,9 +567,9 @@ require('lazy').setup {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {},
+        ts_ls = {},
         tailwindcss = {},
-
+        pylyzer = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes { ...},
@@ -617,12 +614,15 @@ require('lazy').setup {
         'prettierd',
         'prettier',
         'ocamlformat',
+        'mypy',
         'isort',
         'black',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        -- ensure_installed = ensure_installed,
+        automatic_installation = true,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
