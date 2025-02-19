@@ -567,9 +567,12 @@ require('lazy').setup {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        ts_ls = {},
+        -- ts_ls = {},
         tailwindcss = {},
         -- pylyzer = {},
+        -- Python shtuff
+        basedpyright = {},
+        mypy = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes { ...},
