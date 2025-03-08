@@ -46,7 +46,6 @@ return {
     end,
   },
   'folke/noice.nvim',
-  'wakatime/vim-wakatime',
   'folke/zen-mode.nvim',
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
