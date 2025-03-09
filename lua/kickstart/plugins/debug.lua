@@ -40,8 +40,22 @@ return {
         -- Update this to ensure that you have the debuggers for the langs you want
         -- 'delve',
         -- 'python',
+        'java-debug-adapter',
       },
     }
+
+    -- Java testing
+    vim.keymap.set('n', '<leader>tc', function()
+      if vim.bo.filetype == 'java' then
+        require('jdtls').test_class()
+      end
+    end)
+
+    vim.keymap.set('n', '<leader>tm', function()
+      if vim.bo.filetype == 'java' then
+        require('jdtls').test_nearest_method()
+      end
+    end)
 
     -- Basic debugging keymaps, feel free to change to your liking!
     vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
