@@ -30,8 +30,8 @@ return {
   config = function(_, opts)
     -- Lua
     require('substitute').setup(opts)
-    vim.keymap.set('n', 'x', require('substitute').operator, { noremap = true })
-    vim.keymap.set('n', 'xx', require('substitute').line, { noremap = true })
+    vim.keymap.set('n', '<c-s>', require('substitute').operator, { noremap = true })
+    vim.keymap.set('n', '<c-s><c-s>', require('substitute').line, { noremap = true })
     vim.keymap.set('n', 'X', require('substitute').eol, { noremap = true })
     vim.keymap.set('x', 'x', require('substitute').visual, { noremap = true })
   end,
