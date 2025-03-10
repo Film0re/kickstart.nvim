@@ -558,8 +558,8 @@ require('lazy').setup {
         tailwindcss = {},
         -- pylyzer = {},
         -- Python shtuff
-        -- basedpyright = {},
-        -- mypy = {},
+        basedpyright = {},
+        mypy = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes { ...},
@@ -604,17 +604,17 @@ require('lazy').setup {
         'prettierd',
         'prettier',
         'ocamlformat',
-        -- 'mypy',
-        -- 'isort',
+        'mypy',
+        'isort',
         'jdtls',
         'java-debug-adapter',
         'java-test',
-        -- 'black',
+        'black',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        ensure_installed = ensure_installed,
+        -- ensure_installed = ensure_installed,
         automatic_installation = true,
         handlers = {
           function(server_name)
