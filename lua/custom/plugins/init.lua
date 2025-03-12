@@ -16,6 +16,8 @@ vim.opt.relativenumber = true
 
 vim.api.nvim_set_keymap('n', '<leader>y', '"+y', { desc = 'Copy unnamed buffer to clipboard', noremap = true, silent = true })
 
+vim.keymap.set('n', '<leader>gg', ':Git<CR>', { noremap = true, silent = true })
+
 return {
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',

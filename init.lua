@@ -167,11 +167,11 @@ vim.keymap.set('n', ']d', function()
 end, { desc = 'Go to next [D]iagnostic message' })
 
 vim.keymap.set('n', ']e', function()
-  vim.diagnostic.jump { severity = vim.diagnostic.severity.ERROR, count = 1 }
+  vim.diagnostic.jump { severity = vim.diagnostic.severity.ERROR, count = 1, float = true }
 end, { desc = 'Next error' })
 
 vim.keymap.set('n', '[e', function()
-  vim.diagnostic.jump { severity = vim.diagnostic.severity.ERROR, count = -1 }
+  vim.diagnostic.jump { severity = vim.diagnostic.severity.ERROR, count = -1, float = true }
 end, { desc = 'Previous error' })
 
 vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, { desc = 'Show diagnostic Error messages' })
