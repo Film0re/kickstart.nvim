@@ -159,11 +159,11 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Helper function to handle diagnostic jumping
 
 vim.keymap.set('n', '[d', function()
-  vim.diagnostic.jump { count = 1, float = true }
+  vim.diagnostic.jump { count = -1, float = true }
 end, { desc = 'Go to next [D]iagnostic message' })
 
 vim.keymap.set('n', ']d', function()
-  vim.diagnostic.jump { count = -1, float = true }
+  vim.diagnostic.jump { count = 1, float = true }
 end, { desc = 'Go to next [D]iagnostic message' })
 
 vim.keymap.set('n', ']e', function()
@@ -399,13 +399,13 @@ require('lazy').setup {
       end, { desc = '[S]earch Git [C]hanges' })
 
       -- Slightly advanced example of overriding default behavior and theme
-      vim.keymap.set('n', '<leader>/', function()
-        -- You can pass additional configuration to telescope to change theme, layout, etc.
-        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
-      end, { desc = '[/] Fuzzily search in current buffer' })
+      -- vim.keymap.set('n', '<leader>/', function()
+      --   -- You can pass additional configuration to telescope to change theme, layout, etc.
+      --   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+      --     winblend = 10,
+      --     previewer = false,
+      --   })
+      -- end, { desc = '[/] Fuzzily search in current buffer' })
 
       -- Also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
