@@ -381,31 +381,6 @@ require('lazy').setup {
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      -- vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-      -- vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      -- vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      -- vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-      -- vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      -- vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      -- vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      -- vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      -- vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      -- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-
-      vim.keymap.set('n', '<leader>sc', function()
-        builtin.git_status {
-          prompt_title = 'Git Changed Files',
-        }
-      end, { desc = '[S]earch Git [C]hanges' })
-
-      -- Slightly advanced example of overriding default behavior and theme
-      -- vim.keymap.set('n', '<leader>/', function()
-      --   -- You can pass additional configuration to telescope to change theme, layout, etc.
-      --   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-      --     winblend = 10,
-      --     previewer = false,
-      --   })
-      -- end, { desc = '[/] Fuzzily search in current buffer' })
 
       -- Also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -415,11 +390,6 @@ require('lazy').setup {
           prompt_title = 'Live Grep in Open Files',
         }
       end, { desc = '[S]earch [/] in Open Files' })
-
-      -- Shortcut for searching your neovim configuration files
-      -- vim.keymap.set('n', '<leader>sn', function()
-      --   builtin.find_files { cwd = vim.fn.stdpath 'config' }
-      -- end, { desc = '[S]earch [N]eovim files' })
     end,
   },
 
@@ -768,23 +738,6 @@ require('lazy').setup {
     end,
   },
 
-  -- { -- You can easily change to a different colorscheme.
-  --   -- Change the name of the colorscheme plugin below, and then
-  --   -- change the command in the config to whatever the name of that colorscheme is
-  --   --
-  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
-  --   'folke/tokyonight.nvim',
-  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   config = function()
-  --     -- Load the colorscheme here
-  --     vim.cmd.colorscheme 'tokyonight-night'
-
-  --     -- You can configure highlights by doing something like
-  --     vim.cmd.hi 'Comment gui=none'
-  --   end,
-  -- },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -863,15 +816,18 @@ require('lazy').setup {
               -- You can use the capture groups defined in textobjects.scm
               ['aa'] = '@parameter.outer',
               ['ia'] = '@parameter.inner',
+              ['ir'] = '@assignment.rhs',
+              ['ar'] = '@assignment.outer',
               ['af'] = '@function.outer',
               ['if'] = '@function.inner',
-              ['ac'] = '@class.outer',
-              ['ic'] = '@class.inner',
+              ['ac'] = '@call.outer',
+              ['ic'] = '@call.inner',
               ['ii'] = '@conditional.inner',
               ['ai'] = '@conditional.outer',
               ['il'] = '@loop.inner',
               ['al'] = '@loop.outer',
-              ['at'] = '@comment.outer',
+              ['at'] = '@block.outer',
+              ['it'] = '@block.inner',
             },
           },
           move = {
@@ -885,7 +841,8 @@ require('lazy').setup {
               [']i'] = { query = '@conditional.outer', desc = 'Next conditional start' },
               [']l'] = { query = '@loop.outer', desc = 'Next loop start' },
               [']n'] = { query = '@number.inner', desc = 'Next attribute start' },
-              [']t'] = { query = '@comment.outer', desc = 'Next comment start' },
+              -- [']t'] = { query = '@comment.outer', desc = 'Next comment start' },
+              [']r'] = { query = '@assignment.rhs', desc = 'Next rightside assignment' },
 
               -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
               -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
@@ -906,6 +863,9 @@ require('lazy').setup {
               ['[p'] = { query = '@class.outer', desc = 'Prev class start' },
               ['[i'] = { query = '@conditional.outer', desc = 'Prev conditional start' },
               ['[l'] = { query = '@loop.outer', desc = 'Prev loop start' },
+              -- ['[t'] = { query = '@comment.outer', desc = 'Next comment start' },
+              ['[r'] = { query = '@assignment.rhs', desc = 'Next comment start' },
+              ['[n'] = { query = '@number.inner', desc = 'Next attribute start' },
             },
             goto_previous_end = {
               ['[F'] = { query = '@call.outer', desc = 'Prev function call end' },

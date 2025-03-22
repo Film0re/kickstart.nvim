@@ -19,6 +19,8 @@ vim.api.nvim_set_keymap('n', '<leader>y', '"+y', { desc = 'Copy unnamed buffer t
 vim.keymap.set('n', '<leader>gg', ':Git<CR>', { noremap = true, silent = true })
 
 return {
+  'junegunn/fzf',
+  'nanotee/zoxide.vim',
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'nvim-neotest/nvim-nio',
