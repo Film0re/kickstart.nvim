@@ -448,6 +448,12 @@ require('lazy').setup {
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
+          local imap = function(keys, func, desc)
+            vim.keymap.set('i', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc, silent = true })
+          end
+
+          imap('<C-k>', vim.lsp.buf.signature_help, 'Signature Help')
+
           -- Rename the variable under your cursor
           --  Most Language Servers support renaming across files, etc.
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -582,6 +588,8 @@ require('lazy').setup {
         'black',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+      require('lspconfig').gleam.setup {}
 
       require('mason-lspconfig').setup {
         -- ensure_installed = ensure_installed,
